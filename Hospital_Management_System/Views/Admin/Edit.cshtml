@@ -1,0 +1,64 @@
+﻿@model Hospital_Management_System.Models.Doctor
+
+@{
+    ViewData["Title"] = "Edit Doctor Profile";
+    Layout = "~/Views/Shared/-AdminLayout.cshtml";
+
+}
+
+<h4>Edit Doctor Profile</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DoctorID" class="form-control" />
+
+            @* <!-- Doctor ID (readonly) --> *@
+            @* <div class="form-group mb-3"> *@
+            @*     <label asp-for="DoctorID" class="control-label"></label> *@
+            @*     <input asp-for="DoctorID" class="form-control" readonly /> *@
+            @*     <span asp-validation-for="DoctorID" class="text-danger"></span> *@
+            @* </div> *@
+
+            <!-- Doctor Name -->
+            <div class="form-group mb-3">
+                <label asp-for="dName" class="control-label"></label>
+                <input asp-for="dName" class="form-control" />
+                <span asp-validation-for="dName" class="text-danger"></span>
+            </div>
+
+            <!-- Doctor Contact -->
+            <div class="form-group mb-3">
+                <label asp-for="dContact" class="control-label"></label>
+                <input asp-for="dContact" class="form-control" />
+                <span asp-validation-for="dContact" class="text-danger"></span>
+            </div>
+
+            <!-- Doctor Skills -->
+            <div class="form-group mb-3">
+                <label asp-for="Skills" class="control-label"></label>
+                <input asp-for="Skills" class="form-control" />
+                <span asp-validation-for="Skills" class="text-danger"></span>
+            </div>
+
+            <!-- Speciality (Dropdown) -->
+            <div class="form-group mb-3">
+                <label asp-for="sId" class="control-label">Speciality</label>
+                <select class="form-control" asp-for="sId" asp-items="@(new SelectList(ViewBag.specialities,"sId","sName"))"></select>
+                <span asp-validation-for="sId" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group mb-3">
+                <input type="submit" value="Update Doctor Profile" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="AdminHome" class="btn btn-primary">Back to Admin Home</a>
+</div>
+
+

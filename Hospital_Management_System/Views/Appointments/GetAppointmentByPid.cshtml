@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Hospital_Management_System.Models.Appointment>
+
+@{
+    ViewData["Title"] = "GetAppointmentByPid";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<h3>Appointments</h3>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.tslot)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.tslot)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dName)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

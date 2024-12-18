@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Hospital_Management_System.Models.Appointment>
+
+@{
+    ViewData["Title"] = "GetAppointmentByDid";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+<h1>Appointments</h1>
+
+<div class="row d-flex justify-content-center align-items-center mb-3">
+    <div class="col-md-2 form-group mb-3">
+        <input type="text" id="selectDate" value="@ViewBag.Date" class="form-control" placeholder="Select Date" />
+    </div>
+</div>
+
+<table class="table" id="doctorAppointmentTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.pName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tslot)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tslot)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add", "Add", new { id = item.AppointmentID }) |
+                        @Html.ActionLink("View", "View", new { id = item.AppointmentID })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $("#selectDate").datepicker({
+                dateFormat: 'dd-mm-yy',
+                onSelect: function (date, datepicker) {
+                    if (date != "") {
+                        $('#doctorAppointmentTable tbody').empty();
+                        $.ajax({
+                            type: 'GET',
+                            url: '@Url.Action("GetAppointmentByDate")',
+                            dataType: 'json',
+                            data: { date: date },
+                            success: function (res) {
+                                //var res = $.parseJSON(response);
+                                console.log(res);
+                                res.forEach(row => {
+                                    $('#doctorAppointmentTable tbody').append(`<tr>
+                                                            <td>${row.pName}</td>
+                                                            <td>${row.tslot}</td>
+                                                            <td>${row.Comment}</td>
+                                                            </tr>`);
+                                });
+                                $('#doctorAppointmentTable').DataTable();
+                            },
+                            error: function (ex) {
+                                console.log(ex);
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+}

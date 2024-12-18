@@ -1,0 +1,11 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor 
+
+@{
+    ViewData["Title"] = "DoctorHome";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+<h1>Doctor Profile</h1>
+
+<h4>Welcome,@HttpContextAccessor.HttpContext.Session.GetString("UserName")</h4>
+

@@ -1,0 +1,75 @@
+﻿ @model IEnumerable<Hospital_Management_System.Models.Doctor> 
+
+ @{ 
+     ViewData["Title"] = "GetAllDoctors"; 
+     Layout = "~/Views/Shared/_AdminLayout.cshtml"; 
+ } 
+
+ <h3 class="mb-3">Doctors List</h3> 
+
+ <p class="mb-3"> 
+     <a class="btn btn-primary" asp-action="DoctorProfile">Register New Doctor</a> 
+ </p> 
+ <table class="table table-bordered"> 
+     <thead> 
+         <tr> 
+             <th> 
+                 @Html.DisplayNameFor(model => model.DoctorID) 
+             </th> 
+             <th> 
+                 @Html.DisplayNameFor(model => model.dName) 
+             </th> 
+             <th> 
+                 @Html.DisplayNameFor(model => model.Skills) 
+             </th> 
+             <th> 
+                 @Html.DisplayNameFor(model => model.dContact) 
+             </th> 
+             <th> 
+                 @Html.DisplayNameFor(model => model.sId) 
+             </th> 
+             <th>Actions</th> 
+         </tr> 
+     </thead> 
+     <tbody> 
+         @if (Model != null) 
+         { 
+             @foreach (var item in Model) 
+             { 
+                 <tr> 
+                     <td> 
+                         @Html.DisplayFor(modelItem => item.DoctorID) 
+                     </td> 
+                     <td> 
+                         @Html.DisplayFor(modelItem => item.dName) 
+                     </td> 
+                     <td> 
+                         @Html.DisplayFor(modelItem => item.Skills) 
+                     </td> 
+                     <td> 
+                         @Html.DisplayFor(modelItem => item.dContact) 
+                     </td> 
+                     <td> 
+                         @Html.DisplayFor(modelItem => item.sId) 
+                     </td> 
+                     <td> 
+                       
+                         @Html.ActionLink("Edit", "Edit", new { id = item.DoctorID }, new { @class = "btn btn-primary" }) | 
+                         @Html.ActionLink("Details", "Details", new { id = item.DoctorID }, new { @class = "btn btn-info" }) | 
+                         @Html.ActionLink("Delete", "Delete", new { id = item.DoctorID }, new { @class = "btn btn-danger" }) 
+
+                     </td> 
+                 </tr> 
+             } 
+         } 
+         else 
+         { 
+             <tr>                 
+                 <td> 
+                     No Data Found. 
+                 </td> 
+             </tr> 
+         } 
+     </tbody> 
+ </table> 
+

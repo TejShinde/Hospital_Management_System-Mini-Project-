@@ -1,0 +1,54 @@
+﻿@model Hospital_Management_System.Models.User
+
+@{
+    ViewData["Title"] = "Register Doctor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>Register Doctor</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="DoctorRegister" method="post">
+                        <div class="form-group mb-3">
+                            <label for="UserName">Doctor Name</label>
+                            <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Enter doctor's name" required />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="Password">Password</label>
+                            <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter password" required />
+                        </div>
+
+                        <div class="form-group text-center mt-4">
+                            <button type="submit" class="btn btn-primary">Register Doctor</button>
+                        </div>
+                    </form>
+
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-success mt-3">
+                            @ViewBag.Message
+                        </div>
+                    }
+                           
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger mt-3">
+                            @ViewBag.Error
+                        </div>
+                    }
+
+                    <!-- Back to Home Button -->
+                    <div class="text-center mt-4">
+                        <a href="@Url.Action("AdminHome", "Admin")" class="btn btn-secondary">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

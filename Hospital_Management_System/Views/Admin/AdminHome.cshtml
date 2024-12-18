@@ -1,0 +1,82 @@
+﻿@* @{ *@
+@*     ViewData["Title"] = "AdminHome"; *@
+@*     Layout = "~/Views/Shared/_AdminLayout.cshtml"; *@
+@* } *@
+
+@* <h1>AdminHome</h1> *@
+@* <p>Welcome to the Admin Home Page.</p> *@
+
+@*  <a class="btn btn-primary" asp-action="GetAllDoctors">View Doctors</a>  *@
+@*  <a class="btn btn-success" asp-action="DoctorProfile">Create Doctor Profile</a>  *@
+@*  <a class="btn btn-info" asp-action="SpecialityList">View Specialities</a>  *@
+
+
+
+
+
+@{
+    ViewData["Title"] = "AdminHome";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="text-center mb-4">Admin Dashboard</h1>
+
+<div class="container">
+    <div class="row">
+        <!-- Doctor Section -->
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center">
+                    <h5>Doctor Management</h5>
+                </div>
+                <div class="card-body text-center">
+                    <a class="btn btn-outline-primary btn-block" asp-action="GetAllDoctors">View Doctors</a>
+                    <a class="btn btn-outline-success btn-block mt-2" asp-action="DoctorProfile">Register Doctor</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appointments Section -->
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-header bg-warning text-white text-center">
+                    <h5>Appointments</h5>
+                </div>
+                <div class="card-body text-center">
+                    <a class="btn btn-outline-warning btn-block" asp-action="ViewAppointments">View Appointments</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specialities Section -->
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-header bg-info text-white text-center">
+                    <h5>Speciality Management</h5>
+                </div>
+                <div class="card-body text-center">
+                    <a class="btn btn-outline-info btn-block" asp-action="SpecialityList">View Specialities</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logout Section -->
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-header bg-dark text-white text-center">
+                    <h5>Logout</h5>
+                </div>
+                <div class="card-body text-center">
+                    <a class="btn btn-outline-danger btn-block" asp-action="Logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Information Section (Optional) -->
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <p class="lead">Manage all aspects of the hospital, including doctors, appointments, and specialities from the Admin Dashboard.</p>
+        </div>
+    </div>
+</div>

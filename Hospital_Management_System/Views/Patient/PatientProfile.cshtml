@@ -1,0 +1,62 @@
+﻿@model Hospital_Management_System.Models.Patient;
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<div class="row mt-3">
+    <div class="col-md-6">
+        <h4>Patient Profile</h4>
+        <hr />
+
+        <form asp-action="PatientProfile">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="pName" class="control-label"></label>
+                        <input asp-for="pName" class="form-control" />
+                        <span asp-validation-for="pName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  mb-3">
+                        <label asp-for="pContact" class="control-label"></label>
+                        <input asp-for="pContact" class="form-control" />
+                        <span asp-validation-for="pContact" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  mb-3">
+                        <label asp-for="pAddress" class="control-label"></label>
+                        <input asp-for="pAddress" class="form-control" />
+                        <span asp-validation-for="pAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Gender" class="control-label"></label>
+                        <input asp-for="Gender" class="form-control" />
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="Age" class="control-label"></label>
+                        <input asp-for="Age" class="form-control" />
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="BloodGroup" class="control-label"></label>
+                            <input asp-for="BloodGroup" class="form-control" />
+                            <span asp-validation-for="BloodGroup" class="text-danger"></span>
+                        </div>
+
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Add Profile" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

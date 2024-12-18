@@ -1,0 +1,86 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "PatientHome";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+@* <h1>Patient Home</h1> *@
+
+@* <h4>Welcome , @HttpContextAccessor.HttpContext.Session.GetString("UserName")</h4> *@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Patient Home</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <style>
+        /* Custom Styling for Patient Home */
+        .page-title {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff; /* A shade of blue */
+        }
+
+        .welcome-message {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-top: 20px;
+            color: #28a745; /* Green color for the welcome message */
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        /* Optional: Add a background to the page */
+        body {
+            background-color: #f8f9fa; /* Light grey background */
+        }
+        /* Ensure that links always remain blue */
+        .navbar-nav .nav-link {
+            color: #007bff !important; /* Make the text blue */
+        }
+
+            /* Ensure the color does not change on hover or focus */
+            .navbar-nav .nav-link:hover,
+            .navbar-nav .nav-link:focus {
+                color: #007bff !important; /* Keep the blue color on hover/focus */
+                text-decoration: none;
+            }
+            /* Logout link in red */
+            .navbar-nav .nav-link.logout {
+                color: #dc3545 !important; /* Red color for Logout link */
+            }
+
+                /* Red color on hover/focus for Logout link */
+                .navbar-nav .nav-link.logout:hover,
+                .navbar-nav .nav-link.logout:focus {
+                    color: #c82333 !important; /* Darker red for hover/focus */
+             }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Page Title -->
+        <h1 class="page-title">Patient Home</h1>
+
+        <!-- Welcome Message -->
+        <h4 class="welcome-message">Welcome, @HttpContextAccessor.HttpContext.Session.GetString("UserName")</h4>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

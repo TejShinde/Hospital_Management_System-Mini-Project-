@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Hospital_Management_System.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<h3>Appointment List</h3>
+
+<p>
+    <a class="btn btn-info" asp-action="BookAppointment">Book Appointment</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoctorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AppointmentID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DoctorID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PatientID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sId)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.AppointmentID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.AppointmentID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.AppointmentID })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
